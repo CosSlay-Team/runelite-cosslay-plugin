@@ -6,8 +6,7 @@ The CosSlayer is an Ironman who completes Slayer Tasks on behalf of various
 NPCs throughout the game.  As part of this, you take on their full appearance
 and equipment for that single task.
 
-(Potential lore - they're paying you to do the task for them?  Maybe to avoid
-spending slayer points?)
+Lore for the reason tasks have to be completed in this way is in developement.
 
 ## NPCs and Tiers
 The NPCs that you help are divided into tiers of difficulty.  The current tier
@@ -26,9 +25,13 @@ In the case of Hard through Master tiers, more than one tier can be active at
 a time.  For example, when you reach 75 slayer, both the Hard and Elite tiers
 are active; similarly, at 91 slayer all three tiers are active simultaneously.
 
+In the first four tiers, the NPC is assigned at random. Once the Elite, 
+and subsequently the Master tier is unlocked, the tier of the next task is 
+randomly selected, and the NPC is chosen by the player.
+
 ## Progression
 The core gameplay loop goes like this:
-* Select an NPC from the current tier(s)
+* An NPC is selected from the current tier(s)
 * Change appearance and gather gear to match the NPC
 * Talk to the NPC
 * Get and complete a slayer task in that NPC's gear
@@ -41,8 +44,8 @@ The core gameplay loop goes like this:
 
 ## Acquiring Gear
 When acquiring gear, the acquisition method is chosen randomly between
-available methods.  A method is considered available if it is possible if it
-requires the completion of at most one quest, and does not require gaining a
+available methods.  A method is considered available if it requires 
+the completion of at most one quest, and does not require gaining a
 Slayer level.
 
 For the purpose of choosing the acquisition method, there are four general
@@ -71,26 +74,24 @@ For the these purposes, the gathering skills are the ones required to obtain
 the raw materials for the item, and artisan skills are any and all skills
 required to process the materials towards the final item.
 
-### Treasure Trails
-Treasure Trail caskets are considered an available source, and therefore
-possible for random selection, if the CosSlayer has a clue scroll of the
-required tier, or if the item is only available through Treasure Trails.
-
-Items may be obtained for an emote clue in the following ways:
-* Method groups 1, 2 or 3 if no levels or quests are required.
-* Method group 4 if the item is no rarer than 1/64, up to 64kc is allowed.
-  If the item is obtained before 64kc, no further kc is allowed.  If the
-  item is not obtained at 64kc, the clue must be dropped.
+If any of the resources needed to craft the intended item are 
+already in the bank, they must be used. If the artisan skill required
+further resources to reach the level needed to craft the item, the gathering
+skill must still be trained first regardless of what materials are already
+in the bank. 
 
 ## Free Activities
-* Quests may be completed at any time, provided all requirements are met
 * XP gained incidentally through transport around the game is permitted at all
   times.  For example, magic xp from teleports (but not spamming for
   training!), or woodcutting xp from canoes.
+* Prayer trained by burrying bones may be performed any time you get them as 
+  unoted drops. Any trayer training invovoling using the bones on an object 
+  must be done in Free Time, unless a higher prayer level is required to obtain
+  or wear a piece of Cosplay
 * If the CosSlayer loses a part of their costume, such as to a pker, they must
   reobtain it using any available method.  The random process does not apply.
     * XP-less methods are mandatory if possible
     * If the item is only available through method group 4, the highest
       non-boss drop rate method should be used.
-    * Any other items obtained while regaining a costume piece must not be
+    * Any other items obtained while regaining a Cosplay item may not be
       kept.
