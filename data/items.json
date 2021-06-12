@@ -1,0 +1,118 @@
+{
+  "monks_robe_top": {
+    "id": 544,
+    "sources": [
+      {
+        "type": "spawn",
+        "location": {
+          "name": "Edgeville Monastery",
+          "x": 3059,
+          "y": 3487,
+          "z": 1
+        },
+        "requirements": {
+          "skills": {
+            "prayer": 31
+          }
+        }
+      },
+      {
+        "type": "drop_table",
+        "source_name": "Hallowed sack",
+        "drop_rate": 0.5,
+        "location": {
+          "name": "Hallowed Sepulchre",
+          "x": 3059,
+          "y": 3488,
+          "z": 0
+        },
+        "requirements": {
+          "quests": {
+            "sins_of_the_father": 1000
+          },
+          "skills": {
+            "agility": 52
+          }
+        }
+      },
+      {
+        "type": "drop_table",
+        "source_name": "Coffin (Hallowed Sepulchre)",
+        "drop_rate": 0.1,
+        "location": {
+          "name": "Hallowed Sepulchre",
+          "x": 3059,
+          "y": 3488,
+          "z": 0
+        },
+        "requirements": {
+          "quests": {
+            "sins_of_the_father": 1000
+          },
+          "skills": {
+            "agility": 52,
+            "thieving": 66
+          }
+        }
+      }
+    ]
+  },
+  "monks_robe": {
+    "id": 542,
+    "sources": [
+      {
+        "type": "spawn",
+        "location": {
+          "name": "Edgeville Monastery",
+          "x": 3059,
+          "y": 3488,
+          "z": 1
+        },
+        "requirements": {
+          "skills": {
+            "prayer": 31
+          }
+        }
+      },
+      {
+        "type": "drop_table",
+        "source_name": "Hallowed sack",
+        "drop_rate": 0.5,
+        "location": {
+          "name": "Hallowed Sepulchre",
+          "x": 3059,
+          "y": 3488,
+          "z": 0
+        },
+        "requirements": {
+          "quests": {
+            "sins_of_the_father": 1000
+          },
+          "skills": {
+            "agility": 52
+          }
+        }
+      },
+      {
+        "type": "drop_table",
+        "source_name": "Coffin (Hallowed Sepulchre)",
+        "drop_rate": 0.1,
+        "location": {
+          "name": "Hallowed Sepulchre",
+          "x": 3059,
+          "y": 3488,
+          "z": 0
+        },
+        "requirements": {
+          "quests": {
+            "sins_of_the_father": 1000
+          },
+          "skills": {
+            "agility": 52,
+            "thieving": 66
+          }
+        }
+      }
+    ]
+  }
+}

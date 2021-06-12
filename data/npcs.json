@@ -1,0 +1,22 @@
+{
+  "brother_althric": {
+    "id": 1397,
+    "appearance": {
+      "sex": "male",
+      "hair": "hairstyle_male_bald",
+      "skin_color": "color_skin_1",
+      "boot_color": "color_brown"
+    },
+    "equipment": {
+      "top": "monks_robe_top",
+      "legs": "monks_robe"
+    },
+    "location": {
+      "name": "Edgeville Monastery",
+      "x": 3053,
+      "y": 3051,
+      "z": 0
+    },
+    "requirements": {}
+  }
+}

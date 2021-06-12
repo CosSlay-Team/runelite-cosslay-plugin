@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CosslayTeam/tree/main/data/requirements.schema.json",
+  "title": "Requirements",
+  "description": "The skill and quest requirements to unlock something in Runescape",
+  "type": "object",
+  "properties": {
+    "quests": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z_]+$"
+      },
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "skills": {
+      "type": "object",
+      "properties": {
+        "attack": {
+          "type": "integer"
+        },
+        "strength": {
+          "type": "integer"
+        },
+        "defence": {
+          "type": "integer"
+        },
+        "ranged": {
+          "type": "integer"
+        },
+        "prayer": {
+          "type": "integer"
+        },
+        "magic": {
+          "type": "integer"
+        },
+        "runecraft": {
+          "type": "integer"
+        },
+        "hitpoints": {
+          "type": "integer"
+        },
+        "crafting": {
+          "type": "integer"
+        },
+        "mining": {
+          "type": "integer"
+        },
+        "smithing": {
+          "type": "integer"
+        },
+        "fishing": {
+          "type": "integer"
+        },
+        "cooking": {
+          "type": "integer"
+        },
+        "firemaking": {
+          "type": "integer"
+        },
+        "woodcutting": {
+          "type": "integer"
+        },
+        "agility": {
+          "type": "integer"
+        },
+        "herblore": {
+          "type": "integer"
+        },
+        "thieving": {
+          "type": "integer"
+        },
+        "fletching": {
+          "type": "integer"
+        },
+        "slayer": {
+          "type": "integer"
+        },
+        "farming": {
+          "type": "integer"
+        },
+        "construction": {
+          "type": "integer"
+        },
+        "hunter": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

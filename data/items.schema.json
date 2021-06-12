@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CosslayTeam/tree/main/data/items.schema.json",
+  "title": "CosSlay Item",
+  "description": "An item required as part of a CosSlay costume",
+  "type": "object",
+  "propertyNames": {
+    "pattern": "^[a-z_]+$"
+  },
+  "additionalProperties": {
+    "type": "object",
+    "params": {
+      "id": {
+        "type": "integer"
+      },
+      "sources": {
+        "type": "array",
+        "items": {
+          "description": "The source of an item",
+          "$ref": "https://github.com/CosslayTeam/tree/main/data/source.schema.json"
+        }
+      }
+    }
+  }
+}

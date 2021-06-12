@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CosslayTeam/tree/main/data/location.schema.json",
+  "title": "Runescape World Location",
+  "description": "A location in the Runescape world",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "x": {
+      "type": "integer"
+    },
+    "y": {
+      "type": "integer"
+    },
+    "z": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "x",
+    "y",
+    "z"
+  ]
+}
