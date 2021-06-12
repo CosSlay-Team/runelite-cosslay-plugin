@@ -6,7 +6,7 @@ The CosSlayer is an Ironman who completes Slayer Tasks on behalf of various
 NPCs throughout the game.  As part of this, you take on their full appearance
 and equipment for that single task.
 
-Lore for the reason tasks have to be completed in this way is in developement.
+Lore for the reason tasks have to be completed in this way is in development.
 
 ## NPCs and Tiers
 The NPCs that you help are divided into tiers of difficulty.  The current tier
@@ -20,10 +20,6 @@ depends on combat or slayer level.  The tiers are as follows:
 | Hard     | 100+ Combat  | Konar/Nieve/Duradel |
 | Elite    | 75 Slayer    | Konar/Nieve/Duradel |
 | Master   | 91 Slayer    | Konar/Nieve/Duradel |
-
-In the case of Hard through Master tiers, more than one tier can be active at
-a time.  For example, when you reach 75 slayer, both the Hard and Elite tiers
-are active; similarly, at 91 slayer all three tiers are active simultaneously.
 
 In the first four tiers, the NPC is assigned at random. Once the Elite, 
 and subsequently the Master tier is unlocked, the tier of the next task is 
@@ -84,8 +80,8 @@ in the bank.
 * XP gained incidentally through transport around the game is permitted at all
   times.  For example, magic xp from teleports (but not spamming for
   training!), or woodcutting xp from canoes.
-* Prayer trained by burrying bones may be performed any time you get them as 
-  unoted drops. Any trayer training invovoling using the bones on an object 
+* Prayer trained by burying bones may be performed any time you get them as 
+  unnoted drops. Any prayer training involving using the bones on an object 
   must be done in Free Time, unless a higher prayer level is required to obtain
   or wear a piece of Cosplay
 * If the CosSlayer loses a part of their costume, such as to a pker, they must
