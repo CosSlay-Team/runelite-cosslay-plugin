@@ -6,13 +6,10 @@
   "type": "object",
   "properties": {
     "quests": {
-      "type": "object",
-      "patternProperties": {
-        "^[a-z_]+$": {
-          "type": "integer"
-        }
-      },
-      "additionalProperties": false
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "skills": {
       "type": "object",
@@ -85,7 +82,16 @@
         },
         "hunter": {
           "type": "integer"
+        },
+        "combat": {
+          "type": "integer"
         }
+      },
+      "quest_points": {
+        "type": "integer"
+      },
+      "warriors_guild": {
+        "type": "boolean"
       },
       "additionalProperties": false
     }

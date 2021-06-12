@@ -1,13 +1,14 @@
 package com.github.adituv.cosslayplugin.model;
 
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CostumeItem
+public class Location
 {
-	private int id;
-	private List<ItemSource> sources;
+	private String name;
+	private int x;
+	private int y;
+	private int z;
 }

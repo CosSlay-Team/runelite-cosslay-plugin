@@ -8,19 +8,22 @@
     "^[a-z_]+$": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "integer"
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
         },
         "sources": {
           "type": "array",
           "items": {
             "description": "The source of an item",
-            "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/source.schema.json"
+            "$ref": "source.schema.json"
           }
         }
       },
       "additionalProperties": false,
-      "required": ["id","sources"]
+      "required": ["ids","sources"]
     }
   },
   "additionalProperties": false

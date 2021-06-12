@@ -11,6 +11,9 @@
         "id": {
           "type": "integer"
         },
+        "name": {
+          "type": "string"
+        },
         "appearance": {
           "type": "object",
           "properties": {
@@ -41,7 +44,7 @@
             "legs": {
               "type": "string"
             },
-            "leg_color": {
+            "legs_color": {
               "type": "string"
             },
             "boot_color": {
@@ -83,13 +86,19 @@
           },
           "additionalProperties": false
         },
+        "inventory": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "location": {
           "description": "World location of the NPC in RuneScape",
-          "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/location.schema.json"
+          "$ref": "location.schema.json"
         },
         "requirements": {
           "description": "The skills and quests required to access the NPC",
-          "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/requirements.schema.json"
+          "$ref": "requirements.schema.json"
         }
       },
       "required": [

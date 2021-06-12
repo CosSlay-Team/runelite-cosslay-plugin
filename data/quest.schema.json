@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/quest.schema.json",
+  "title": "Runescape Quest",
+  "description": "A definition of a Runescape quest",
+  "type": "object",
+  "patternProperties": {
+    "^[a-z_]+$": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "requirements": {
+          "description": "The requirements for the quest",
+          "$ref": "requirements.schema.json"
+        }
+      },
+      "required": [
+        "name",
+        "id",
+        "requirements"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

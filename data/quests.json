@@ -1,0 +1,22 @@
+{
+  "another_slice_of_h_a_m": {
+    "name": "Another Slice of H.A.M.",
+    "id": 332,
+    "requirements": {
+      "quests": [
+        "death_to_the_dorgeshuun",
+        "the_giant_dwarf",
+        "the_dig_site"
+      ],
+      "skills": {
+        "attack": 15,
+        "prayer": 25
+      }
+    }
+  },
+  "cooks_assistant": {
+    "name": "Cook's Assistant",
+    "id": 300,
+    "requirements": {}
+  }
+}

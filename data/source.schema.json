@@ -8,10 +8,10 @@
     "type": {
       "type": "string",
       "enum": [
-        "spawn",
-        "shop",
-        "craft",
-        "drop_table"
+        "item_method_spawn",
+        "item_method_shop",
+        "item_method_create",
+        "item_method_random"
       ]
     },
     "source_name": {
@@ -31,11 +31,11 @@
     },
     "location": {
       "description": "Where the item can be acquired",
-      "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/location.schema.json"
+      "$ref": "location.schema.json"
     },
     "requirements": {
       "description": "The requirements to obtain the item this way",
-      "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/requirements.schema.json"
+      "$ref": "requirements.schema.json"
     }
   },
   "required": [
