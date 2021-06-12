@@ -1,102 +1,105 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/CosslayTeam/tree/main/data/npcs.schema.json",
-  "title": "CosSlay NPC",
-  "description": "An NPC to be cosplayed as in the CosSlay gamemode",
+  "$id": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/npcs.schema.json",
+  "title": "CosSlay NPCs",
+  "description": "The NPCs to be cosplayed as in the CosSlay gamemode",
   "type": "object",
-  "propertyNames": {
-    "pattern": "^[a-z_]+$"
+  "patternProperties": {
+    "^[a-z_]+$": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "appearance": {
+          "type": "object",
+          "properties": {
+            "sex": {
+              "type": "string"
+            },
+            "skin_color": {
+              "type": "string"
+            },
+            "hair": {
+              "type": "string"
+            },
+            "hair_color": {
+              "type": "string"
+            },
+            "beard": {
+              "type": "string"
+            },
+            "torso": {
+              "type": "string"
+            },
+            "torso_color": {
+              "type": "string"
+            },
+            "arms": {
+              "type": "string"
+            },
+            "legs": {
+              "type": "string"
+            },
+            "leg_color": {
+              "type": "string"
+            },
+            "boot_color": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "equipment": {
+          "type": "object",
+          "properties": {
+            "head": {
+              "type": "string"
+            },
+            "cape": {
+              "type": "string"
+            },
+            "neck": {
+              "type": "string"
+            },
+            "top": {
+              "type": "string"
+            },
+            "weapon": {
+              "type": "string"
+            },
+            "shield": {
+              "type": "string"
+            },
+            "legs": {
+              "type": "string"
+            },
+            "hands": {
+              "type": "string"
+            },
+            "boots": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "location": {
+          "description": "World location of the NPC in RuneScape",
+          "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/location.schema.json"
+        },
+        "requirements": {
+          "description": "The skills and quests required to access the NPC",
+          "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/requirements.schema.json"
+        }
+      },
+      "required": [
+        "id",
+        "appearance",
+        "equipment",
+        "location"
+      ],
+      "additionalProperties": false
+    }
   },
-  "additionalProperties": {
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "integer"
-      },
-      "appearance": {
-        "type": "object",
-        "properties": {
-          "sex": {
-            "type": "string"
-          },
-          "skin_color": {
-            "type": "string"
-          },
-          "hair": {
-            "type": "string"
-          },
-          "hair_color": {
-            "type": "string"
-          },
-          "beard": {
-            "type": "string"
-          },
-          "torso": {
-            "type": "string"
-          },
-          "torso_color": {
-            "type": "string"
-          },
-          "arms": {
-            "type": "string"
-          },
-          "legs": {
-            "type": "string"
-          },
-          "leg_color": {
-            "type": "string"
-          },
-          "boot_color": {
-            "type": "string"
-          }
-        }
-      },
-      "equipment": {
-        "type": "object",
-        "properties": {
-          "head": {
-            "type": "string"
-          },
-          "cape": {
-            "type": "string"
-          },
-          "neck": {
-            "type": "string"
-          },
-          "top": {
-            "type": "string"
-          },
-          "weapon": {
-            "type": "string"
-          },
-          "shield": {
-            "type": "string"
-          },
-          "legs": {
-            "type": "string"
-          },
-          "hands": {
-            "type": "string"
-          },
-          "boots": {
-            "type": "string"
-          }
-        }
-      },
-      "location": {
-        "description": "World location of the NPC in RuneScape",
-        "$ref": "https://github.com/CosslayTeam/tree/main/data/location.schema.json"
-      },
-      "requirements": {
-        "description": "The skills and quests required to access the NPC",
-        "$ref": "https://github.com/CosslayTeam/tree/main/data/requirements.schema.json"
-      }
-    },
-    "required": [
-      "id",
-      "appearance",
-      "equipment",
-      "location"
-    ]
-  }
+  "additionalProperties": false
 }

@@ -1,25 +1,27 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/CosslayTeam/tree/main/data/items.schema.json",
+  "$id": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/items.schema.json",
   "title": "CosSlay Item",
   "description": "An item required as part of a CosSlay costume",
   "type": "object",
-  "propertyNames": {
-    "pattern": "^[a-z_]+$"
-  },
-  "additionalProperties": {
-    "type": "object",
-    "params": {
-      "id": {
-        "type": "integer"
-      },
-      "sources": {
-        "type": "array",
-        "items": {
-          "description": "The source of an item",
-          "$ref": "https://github.com/CosslayTeam/tree/main/data/source.schema.json"
+  "patternProperties": {
+    "^[a-z_]+$": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "description": "The source of an item",
+            "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/source.schema.json"
+          }
         }
-      }
+      },
+      "additionalProperties": false,
+      "required": ["id","sources"]
     }
-  }
+  },
+  "additionalProperties": false
 }

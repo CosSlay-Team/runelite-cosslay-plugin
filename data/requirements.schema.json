@@ -1,18 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/CosslayTeam/tree/main/data/requirements.schema.json",
+  "$id": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/requirements.schema.json",
   "title": "Requirements",
   "description": "The skill and quest requirements to unlock something in Runescape",
   "type": "object",
   "properties": {
     "quests": {
       "type": "object",
-      "propertyNames": {
-        "pattern": "^[a-z_]+$"
+      "patternProperties": {
+        "^[a-z_]+$": {
+          "type": "integer"
+        }
       },
-      "additionalProperties": {
-        "type": "integer"
-      }
+      "additionalProperties": false
     },
     "skills": {
       "type": "object",
@@ -86,7 +86,8 @@
         "hunter": {
           "type": "integer"
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }

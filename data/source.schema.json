@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/CosslayTeam/tree/main/data/source.schema.json",
+  "$id": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/source.schema.json",
   "title": "CosSlay Item Source",
   "description": "An way to acquire an item in RuneScape",
   "type": "object",
-  "params": {
+  "properties": {
     "type": {
       "type": "string",
       "enum": [
@@ -31,15 +31,16 @@
     },
     "location": {
       "description": "Where the item can be acquired",
-      "$ref": "https://github.com/CosslayTeam/tree/main/data/location.schema.json"
+      "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/location.schema.json"
     },
     "requirements": {
       "description": "The requirements to obtain the item this way",
-      "$ref": "https://github.com/CosslayTeam/tree/main/data/requirements.schema.json"
+      "$ref": "https://raw.githubusercontent.com/CosSlay-Team/runelite-cosslay-plugin/main/data/requirements.schema.json"
     }
   },
   "required": [
     "type",
     "source_name"
-  ]
+  ],
+  "additionalProperties": false
 }
