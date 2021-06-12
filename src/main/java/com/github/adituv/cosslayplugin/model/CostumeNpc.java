@@ -1,4 +1,5 @@
 package com.github.adituv.cosslayplugin.model;
 
-public class CostumeNpc {
+public class CostumeNpc
+{
 }
