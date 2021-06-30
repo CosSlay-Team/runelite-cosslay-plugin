@@ -1,16 +1,18 @@
 package com.github.adituv.cosslayplugin.model;
 
 import com.google.common.collect.ImmutableList;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Setter
+@Slf4j
 public class CostumeNpc
 {
 	private int id;
@@ -22,25 +24,40 @@ public class CostumeNpc
 	@SerializedName("inventory")
 	private List<String> inventoryIds;
 
-	@Expose(deserialize = false)
-	private List<CostumeItem> inventory;
+	private transient List<CostumeItem> inventory;
 
-	public void loadItems(Map<String, CostumeItem> items)
+
+	@Getter(AccessLevel.NONE)
+	@Setter(AccessLevel.NONE)
+	private boolean dataLoaded = false;
+
+	public void loadExtraData(Map<String, CostumeItem> itemDefinitions, Map<String, Quest> quests)
 	{
-		this.equipment.loadItems(items);
-
-		if (inventoryIds == null)
+		if (!dataLoaded)
 		{
-			return;
+			this.equipment.loadExtraData(itemDefinitions);
+
+			ArrayList<CostumeItem> inventory = new ArrayList<>();
+
+			for (String item : inventoryIds)
+			{
+				CostumeItem i = itemDefinitions.get(item);
+
+				if (i != null)
+				{
+					inventory.add(itemDefinitions.get(item));
+				}
+				else
+				{
+					log.error("Missing item definition: {}", item);
+				}
+			}
+
+			this.inventory = ImmutableList.copyOf(inventory);
+
+			this.requirements.loadExtraData(quests);
+
+			dataLoaded = true;
 		}
-
-		ArrayList<CostumeItem> inventory = new ArrayList<>();
-
-		for (String item : inventoryIds)
-		{
-			inventory.add(items.get(item));
-		}
-
-		this.inventory = ImmutableList.copyOf(inventory);
 	}
 }

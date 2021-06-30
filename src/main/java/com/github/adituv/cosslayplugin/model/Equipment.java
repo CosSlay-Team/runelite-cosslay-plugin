@@ -36,17 +36,17 @@ public class Equipment
 	@SerializedName("boots")
 	private String bootsId;
 
-	private CostumeItem head;
-	private CostumeItem cape;
-	private CostumeItem neck;
-	private CostumeItem top;
-	private CostumeItem weapon;
-	private CostumeItem shield;
-	private CostumeItem legs;
-	private CostumeItem hands;
-	private CostumeItem boots;
+	private transient CostumeItem head;
+	private transient CostumeItem cape;
+	private transient CostumeItem neck;
+	private transient CostumeItem top;
+	private transient CostumeItem weapon;
+	private transient CostumeItem shield;
+	private transient CostumeItem legs;
+	private transient CostumeItem hands;
+	private transient CostumeItem boots;
 
-	public void loadItems(Map<String, CostumeItem> items)
+	public void loadExtraData(Map<String, CostumeItem> items)
 	{
 		this.head = items.get(headId);
 		this.cape = items.get(capeId);

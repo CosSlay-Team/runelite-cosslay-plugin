@@ -6,12 +6,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.inject.Singleton;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,12 +28,13 @@ public class PluginData
 
 	private HashMap<String, CostumeNpc> npcDefinitions;
 	private HashMap<String, CostumeItem> itemDefinitions;
+	private HashMap<String, Quest> questDefinitions;
 
 	@Getter
 	@Setter
-	private String dataFolder = ".";
+	private String dataFolder = "data";
 
-	private PluginData()
+	PluginData()
 	{
 		this.npcDefinitions = null;
 		this.itemDefinitions = null;
@@ -60,7 +59,12 @@ public class PluginData
 		return Collections.unmodifiableMap(itemDefinitions);
 	}
 
-	public void loadFromFiles() throws FileNotFoundException, InvalidPathException, IOException
+	public Map<String, Quest> getQuestDefinitions()
+	{
+		return Collections.unmodifiableMap(questDefinitions);
+	}
+
+	public void loadFromFiles() throws IOException
 	{
 		final Type itemsMapType = new TypeToken<HashMap<String, CostumeItem>>()
 		{
@@ -70,8 +74,13 @@ public class PluginData
 		{
 		}.getType();
 
+		final Type questsMapType = new TypeToken<HashMap<String, Quest>>()
+		{
+		}.getType();
+
 		String itemsPath = Path.of(dataFolder, "items.json").toString();
 		String npcsPath = Path.of(dataFolder, "npcs.json").toString();
+		String questsPath = Path.of(dataFolder, "quests.json").toString();
 
 		try (Reader itemsReader = new FileReader(itemsPath))
 		{
@@ -83,9 +92,24 @@ public class PluginData
 			npcDefinitions = gson.fromJson(npcsReader, npcMapType);
 		}
 
+		try (BufferedReader questsReader = new BufferedReader(new FileReader(questsPath)))
+		{
+			questDefinitions = gson.fromJson(questsReader, questsMapType);
+		}
+
+		for (Quest q : questDefinitions.values())
+		{
+			q.loadExtraData(questDefinitions);
+		}
+
+		for (CostumeItem i : itemDefinitions.values())
+		{
+			i.loadExtraData(itemDefinitions, questDefinitions);
+		}
+
 		for (CostumeNpc n : npcDefinitions.values())
 		{
-			n.loadItems(itemDefinitions);
+			n.loadExtraData(itemDefinitions, questDefinitions);
 		}
 	}
 }
