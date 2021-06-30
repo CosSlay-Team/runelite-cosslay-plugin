@@ -1,7 +1,6 @@
 package com.github.adituv.cosslayplugin;
 
 import com.github.adituv.cosslayplugin.model.KitColor;
-import com.google.inject.Injector;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import lombok.extern.slf4j.Slf4j;
@@ -24,8 +23,6 @@ import net.runelite.client.plugins.PluginDescriptor;
 )
 public final class CosslayPlugin extends Plugin
 {
-	private int VIEWPORT_GROUP_ID = 0;
-
 	@Inject
 	private Client client;
 
@@ -108,6 +105,7 @@ public final class CosslayPlugin extends Plugin
 
 		// Close custom chatbox panels when the player does anything requiring navigation.  This is to
 		// emulate the OnDialogAbortListener which doesn't trigger in all situations
+		int VIEWPORT_GROUP_ID = 0;
 		if (widgetGroupId == VIEWPORT_GROUP_ID && !option.equals("Cancel") && !option.equals("Examine"))
 		{
 			cosmoDialogChain.abort();
