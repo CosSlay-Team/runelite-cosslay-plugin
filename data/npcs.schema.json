@@ -14,45 +14,6 @@
         "name": {
           "type": "string"
         },
-        "appearance": {
-          "type": "object",
-          "properties": {
-            "sex": {
-              "type": "string"
-            },
-            "skin_color": {
-              "type": "string"
-            },
-            "hair": {
-              "type": "string"
-            },
-            "hair_color": {
-              "type": "string"
-            },
-            "beard": {
-              "type": "string"
-            },
-            "torso": {
-              "type": "string"
-            },
-            "torso_color": {
-              "type": "string"
-            },
-            "arms": {
-              "type": "string"
-            },
-            "legs": {
-              "type": "string"
-            },
-            "legs_color": {
-              "type": "string"
-            },
-            "boot_color": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
-        },
         "equipment": {
           "type": "object",
           "properties": {
@@ -103,7 +64,6 @@
       },
       "required": [
         "id",
-        "appearance",
         "equipment",
         "location"
       ],

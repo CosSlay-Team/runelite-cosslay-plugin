@@ -15,7 +15,6 @@ public class CostumeNpc
 {
 	private int id;
 	private String name;
-	private Appearance appearance;
 	private Equipment equipment;
 	private Location location;
 	private Requirements requirements;

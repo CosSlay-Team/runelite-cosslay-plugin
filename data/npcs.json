@@ -2,12 +2,6 @@
   "brother_althric": {
     "id": 1397,
     "name": "Brother Althric",
-    "appearance": {
-      "sex": "sex_male",
-      "hair": "hairstyle_male_bald",
-      "skin_color": "color_skin_1",
-      "boot_color": "color_brown"
-    },
     "equipment": {
       "top": "monks_robe_top",
       "legs": "monks_robe"
