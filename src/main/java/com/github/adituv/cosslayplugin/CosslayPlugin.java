@@ -1,18 +1,15 @@
 package com.github.adituv.cosslayplugin;
 
-import com.github.adituv.cosslayplugin.model.KitColor;
+import com.google.inject.Provides;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
-import net.runelite.api.events.GameTick;
-import net.runelite.api.events.InteractingChanged;
-import net.runelite.api.events.MenuOptionClicked;
-import net.runelite.api.events.WidgetLoaded;
-import net.runelite.api.widgets.WidgetID;
-import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.events.PlayerChanged;
 import net.runelite.client.callback.ClientThread;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.chatbox.ChatboxPanelManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -35,86 +32,66 @@ public final class CosslayPlugin extends Plugin
 	@Inject
 	private Provider<FakeDialogInput> fakeDialogInputProvider;
 
-	private boolean shouldOverrideDialog = true;
-	private FakeDialogChain cosmoDialogChain;
+	@Inject
+	private CosslayConfig config;
+
+	private boolean isTransformActive = false;
+	private int transformNpcId = -1;
+
+	@Provides
+	CosslayConfig provideConfig(ConfigManager configManager)
+	{
+		return configManager.getConfig(CosslayConfig.class);
+	}
 
 	@Override
-	protected void startUp() throws Exception
+	protected void startUp()
 	{
-		cosmoDialogChain = createCosmoDialogChain();
-	}
-
-	private FakeDialogChain createCosmoDialogChain()
-	{
-		final int FAKEHASH_COSMO = 2;
-
-		int[] cosmoEquips = new int[] {ItemID.MASK_OF_BALANCE + 512, -1, -1, -1, -1, -1, -1, -1, 256, -1, -1, -1};
-		int[] cosmoColors = new int[] {-1, -1, -1, -1, KitColor.COLOR_BLACK.getSkinId()};
-
-		FakeDialogInput dialog1 = fakeDialogInputProvider.get()
-			.type(DialogType.DIALOG_HEAD_LEFT)
-			.player()
-			.speakerName("Cosmo")
-			.overrides(cosmoEquips, cosmoColors)
-			.fakePlayerHash(FAKEHASH_COSMO)
-			.message("You are not ready.  I will contact you when it is<br>time.");
-
-		FakeDialogInput dialog2 = fakeDialogInputProvider.get()
-			.type(DialogType.DIALOG_HEAD_RIGHT)
-			.player()
-			.message("Well, that was strange.");
-
-		FakeDialogChain cosmoChain = new FakeDialogChain(chatboxPanelManager);
-		cosmoChain.append(dialog1);
-		cosmoChain.append(dialog2);
-
-		return cosmoChain;
+		isTransformActive = config.isTransformActive();
+		transformNpcId = config.transformNpcId();
 	}
 
 	@Subscribe
-	private void onInteractingChanged(InteractingChanged e)
+	private void onConfigChanged(ConfigChanged e)
 	{
-		if (e.getSource() == client.getLocalPlayer() && e.getTarget() != null)
+		if (e.getKey().equals("isTransformActive"))
 		{
-			log.debug("Setting dialog override trigger");
-			shouldOverrideDialog = true;
+			isTransformActive = config.isTransformActive();
+			applyPlayerTransform();
+		}
+		else if (e.getKey().equals("transformNpcId"))
+		{
+			transformNpcId = config.transformNpcId();
+			applyPlayerTransform();
 		}
 	}
 
 	@Subscribe
-	private void onWidgetLoaded(WidgetLoaded e)
+	private void onPlayerChanged(PlayerChanged e)
 	{
-		if (e.getGroupId() == WidgetID.DIALOG_NPC_GROUP_ID
-			|| e.getGroupId() == WidgetID.DIALOG_PLAYER_GROUP_ID
-			|| e.getGroupId() == WidgetID.DIALOG_OPTION_GROUP_ID)
-		{
-			if (shouldOverrideDialog)
-			{
-				shouldOverrideDialog = false;
-
-				cosmoDialogChain.show();
-			}
-		}
+		applyPlayerTransform();
 	}
 
-	@Subscribe
-	private void onMenuOptionClicked(MenuOptionClicked e)
+	private void applyPlayerTransform()
 	{
-		int widgetGroupId = WidgetInfo.TO_GROUP(e.getWidgetId());
-		String option = e.getMenuOption();
-
-		// Close custom chatbox panels when the player does anything requiring navigation.  This is to
-		// emulate the OnDialogAbortListener which doesn't trigger in all situations
-		int VIEWPORT_GROUP_ID = 0;
-		if (widgetGroupId == VIEWPORT_GROUP_ID && !option.equals("Cancel") && !option.equals("Examine"))
+		Player p = client.getLocalPlayer();
+		if (p == null)
 		{
-			cosmoDialogChain.abort();
+			return;
 		}
-	}
 
-	@Subscribe
-	private void onGameTick(GameTick e)
-	{
-		cosmoDialogChain.update();
+		PlayerComposition playerComposition = p.getPlayerComposition();
+		assert playerComposition != null;
+
+		if (isTransformActive)
+		{
+			playerComposition.setTransformedNpcId(transformNpcId);
+		}
+		else
+		{
+			playerComposition.setTransformedNpcId(-1);
+		}
+
+		playerComposition.setHash();
 	}
 }
